@@ -5,32 +5,27 @@ def runtime(f):
 		start = time()
 		f(*arg)
 		delta = time()-start
-		print "%s took %d seconds"%(f.func_name, delta)
+		print "execution time: %d seconds"%(delta)
 		return time()-start
 	return wrapper
 
 def name(f):
 	def wrapper(*arg):
-		print f.func_name
-		print str(arg)
-		return f.func_name
+		res = f.func_name + str(arg)
+		return res
 	return wrapper
 
 @runtime
-@name
 def to_low(c):
 	return c.lower()
 
-#print to_low("A")
-
-@runtime
 @name
-def fib(x):
-	if x>1:
+def fib(n):
+	if n>1:
 		return fib(n-1)+fib(n-2)
-	if x==1:
+	if n==1:
 		return 1
 	else:
 		return 0
 
-print fib(3)
+print fib(20)
