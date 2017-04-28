@@ -5,7 +5,7 @@ def runtime(f):
 		start = time()
 		f(*arg)
 		delta = time()-start
-		print "execution time: %d seconds"%(f.func_name, arg, delta)
+		print "execution time: %d seconds"%(delta)
 		return time()-start
 	return wrapper
 
@@ -31,3 +31,4 @@ def fib(n):
 		return 0
 
 print fib(5)
+print to_low("A")
