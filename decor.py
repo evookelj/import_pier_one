@@ -5,13 +5,15 @@ def runtime(f):
 		start = time()
 		f(*arg)
 		delta = time()-start
-		print "execution time: %d seconds"%(delta)
+		print "execution time: %d seconds"%(f.func_name, arg, delta)
 		return time()-start
 	return wrapper
 
 def name(f):
 	def wrapper(*arg):
-		res = f.func_name + str(arg)
+		ret = f(*arg)
+		res = "%s%s"%(f.func_name, arg)
+		print res
 		return res
 	return wrapper
 
@@ -28,4 +30,4 @@ def fib(n):
 	else:
 		return 0
 
-print fib(20)
+print fib(5)
